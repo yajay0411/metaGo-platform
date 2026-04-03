@@ -1,0 +1,22 @@
+{
+  "name": "metago-platform",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.1.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "dev:main-app": "turbo run dev --filter=main-app",
+    "dev:product-1": "turbo run dev --filter=product-1",
+    "dev:product-2": "turbo run dev --filter=product-2",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "type:check": "turbo run type-check",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.0"
+  }
+}

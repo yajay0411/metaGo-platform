@@ -1,0 +1,28 @@
+{
+  "name": "@repo/logger",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:ts": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "lint:ts:fix": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
+    "lint:scss": "stylelint 'src/**/*.{scss,css}' --allow-empty-input || true",
+    "lint:scss:fix": "stylelint 'src/**/*.{scss,css}' --fix --allow-empty-input || true",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  }
+}
