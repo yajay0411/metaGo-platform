@@ -15,9 +15,88 @@ metaGo-platform/
 └── package.json
 ```
 
-## Vercel Deployment
+## Vercel Monorepo Deployment
 
-### Project 1: main-app
+### Single Vercel Project Setup
+
+| Setting            | Value                                                               |
+| ------------------ | ------------------------------------------------------------------- |
+| Root Directory     | `/` (repository root)                                               |
+| Framework Preset   | Other                                                               |
+| Build Command      | `pnpm build`                                                        |
+| Install Command    | `pnpm install`                                                      |
+| Output Directories | `apps/main-app/.next`, `apps/product-1/dist`, `apps/product-2/dist` |
+
+### Domain Configuration
+
+- **Primary Domain**: `metago.health.com` → main-app
+- **Additional Domains**:
+  - `product1.metago.health.com` → product-1
+  - `product2.metago.health.com` → product-2
+
+### Vercel Configuration
+
+Create `vercel.json` in repository root:
+
+```json
+{
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "functions": {},
+  "builds": [
+    {
+      "src": "apps/main-app/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "skipBuild": "if ! git rev-parse HEAD~1 >/dev/null 2>&1; then exit 1; fi; CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD); echo \"$CHANGED_FILES\" | grep -qE \"^apps/main-app/|^packages/\" && exit 1 || exit 0"
+      }
+    },
+    {
+      "src": "apps/product-1/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "skipBuild": "if ! git rev-parse HEAD~1 >/dev/null 2>&1; then exit 1; fi; CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD); echo \"$CHANGED_FILES\" | grep -qE \"^apps/product-1/|^packages/\" && exit 1 || exit 0"
+      }
+    },
+    {
+      "src": "apps/product-2/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "skipBuild": "if ! git rev-parse HEAD~1 >/dev/null 2>&1; then exit 1; fi; CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD); echo \"$CHANGED_FILES\" | grep -qE \"^apps/product-2/|^packages/\" && exit 1 || exit 0"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/main-app/$1"
+    }
+  ]
+}
+```
+
+### Build Skip Logic
+
+The `skipBuild` commands implement smart deployment:
+
+- **main-app**: Builds only if `apps/main-app/` or `packages/` files changed
+- **product-1**: Builds only if `apps/product-1/` or `packages/` files changed
+- **product-2**: Builds only if `apps/product-2/` or `packages/` files changed
+
+This ensures single-project deployments in the monorepo setup.
+
+### Legacy Project Settings (for reference)
+
+> **Note**: Below are the individual project settings that were replaced by the monorepo setup above.
+
+#### Project 1: main-app (Legacy)
 
 | Setting          | Value                                               |
 | ---------------- | --------------------------------------------------- |
