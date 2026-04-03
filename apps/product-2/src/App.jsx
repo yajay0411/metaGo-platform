@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (
-    <div className='min-h-screen bg-white'>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
       <nav className="border-b border-gray-200 px-6 py-3">
         <div className="flex items-center gap-6">
           <span className="font-semibold text-gray-900">Product-2 (No TS)</span>
