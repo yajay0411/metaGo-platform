@@ -19,11 +19,5 @@
         "distDir": "dist"
       }
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/apps/main-app/$1"
-    }
   ]
 }
