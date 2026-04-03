@@ -1,12 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NODE_ENV"],
-  "tasks": {
+  "globalEnv": ["NODE_ENV", "VERCEL_ENV"],
+  "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"],
-      "env": ["NEXT_PUBLIC_*", "VITE_*"]
+      "env": ["NEXT_PUBLIC_*", "VITE_*"],
+      "inputs": ["$TURBO_DEFAULT$", ".env.local"]
     },
     "dev": {
       "cache": false,
@@ -14,6 +15,26 @@
     },
     "clean": {
       "cache": false
+    },
+    "//#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "env": ["NEXT_PUBLIC_*", "VITE_*"]
+    },
+    "main-app#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["NEXT_PUBLIC_*"]
+    },
+    "product-1#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "env": ["VITE_*"]
+    },
+    "product-2#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "env": ["VITE_*"]
     }
   }
 }
