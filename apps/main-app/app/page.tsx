@@ -8,7 +8,7 @@ export default function Home() {
   logger.info("Home page rendered");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="text-center">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">MetaGo Health Platform</h1>
         <p className="text-lg text-gray-600 mb-2">Healthcare Management Solution</p>
