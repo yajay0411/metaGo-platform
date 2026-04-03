@@ -27,15 +27,5 @@
         "skipBuild": "if ! git rev-parse HEAD~1 >/dev/null 2>&1; then exit 1; fi; CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD); echo \"$CHANGED_FILES\" | grep -qE \"^apps/product-2/|^packages/\" && exit 1 || exit 0"
       }
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/apps/main-app/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/apps/main-app/$1"
-    }
   ]
 }
