@@ -8,7 +8,7 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <nav className="border-b border-gray-200 px-6 py-3">
         <div className="flex items-center gap-6">
-          <span className="font-semibold text-gray-900">Product-1</span>
+          <span className="font-semibold text-green-800 text-lg">Product-1</span>
           <Link to="/" className="text-sm text-gray-600 hover:text-gray-900">
             Home
           </Link>
