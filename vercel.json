@@ -30,7 +30,8 @@
   ],
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/api/(.*)",
+      "dest": "/apps/main-app/api/$1"
     },
     {
       "src": "/(.*)",
