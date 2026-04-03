@@ -12,7 +12,7 @@ export default function Home() {
       <div className="text-center p-8 bg-white rounded-lg shadow-xl max-w-2xl mx-4 border border-blue-200">
         <h1 className="text-5xl font-bold text-blue-900 mb-4">MetaGo Health Platform</h1>
         <p className="text-lg text-blue-700 mb-2">Healthcare Management Solution</p>
-        <p className="text-sm text-blue-600">
+        <p className="text-sm text-blue-600 font-medium">
           Next.js App Router &middot; TypeScript &middot; @repo/logger
         </p>
       </div>
