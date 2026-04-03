@@ -13,7 +13,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-gray-900 mb-4">MetaGo Health Platform</h1>
         <p className="text-lg text-gray-600 mb-2">Healthcare Management Solution</p>
         <p className="text-sm text-gray-400">
-          main-app &middot; Next.js App Router &middot; @repo/logger integrated
+          Next.js App Router &middot; TypeScript &middot; @repo/logger
         </p>
       </div>
     </main>
