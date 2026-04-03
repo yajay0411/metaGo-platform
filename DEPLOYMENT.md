@@ -6,7 +6,8 @@
 metaGo-platform/
 ├── apps/
 │   ├── main-app/     → Next.js (App Router)  → metago.health.com
-│   └── product-1/    → React + Vite          → product1.metago.health.com
+│   ├── product-1/    → React + Vite          → product1.metago.health.com
+│   └── product-2/    → React + Vite (JS)     → product2.metago.health.com
 ├── packages/
 │   └── logger/       → Shared logging service
 ├── turbo.json
@@ -38,6 +39,17 @@ metaGo-platform/
 | Install Command  | `cd ../.. && pnpm install`                           |
 | Domain           | `product1.metago.health.com`                         |
 
+### Project 3: product-2
+
+| Setting          | Value                                                |
+| ---------------- | ---------------------------------------------------- |
+| Root Directory   | `apps/product-2`                                     |
+| Framework        | Vite                                                 |
+| Build Command    | `cd ../.. && npx turbo run build --filter=product-2` |
+| Output Directory | `dist`                                               |
+| Install Command  | `cd ../.. && pnpm install`                           |
+| Domain           | `product2.metago.health.com`                         |
+
 ## Environment Variables
 
 ### Strategy
@@ -65,6 +77,7 @@ pnpm dev
 # Run specific app
 turbo run dev --filter=main-app
 turbo run dev --filter=product-1
+turbo run dev --filter=product-2
 
 # Build all
 pnpm build
