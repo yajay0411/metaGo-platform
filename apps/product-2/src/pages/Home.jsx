@@ -9,7 +9,7 @@ export default function Home() {
     <main className="flex min-h-[calc(100vh-53px)] flex-col items-center justify-center">
       <div className="text-center">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Hello World — React (No TypeScript)
+          {import.meta.env?.VITE_APP_NAME || "Hello World — React (No TypeScript)"}
         </h1>
         <p className="text-lg text-gray-600 mb-2">MetaGo Health — Product 2</p>
         <p className="text-sm text-gray-400">
